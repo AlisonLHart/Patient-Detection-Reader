@@ -4,8 +4,11 @@ A alert solution for hospital environments. This project aims to decrease staff 
 
 ## System Dependancies 
 
-The below sections detail the central parts of the system, including Python source files and hardware component descriptions.
-
+This system operates using:
+	- Python 3.6.7
+	- Kivy 1.10.1
+	- Rasbian
+ 
 ## Hardware
 
 System hardware consists of a Raspberry Pi 3b, an RC522 Antenna RFID Reader, and associated RFID cards. The RFID is wired to the Pi through use of a breadboard. The wiring documentation can be found under: https://pimylifeup.com/raspberry-pi-rfid-rc522/
