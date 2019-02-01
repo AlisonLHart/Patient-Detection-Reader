@@ -5,9 +5,9 @@ A alert solution for hospital environments. This project aims to decrease staff 
 ## System Dependancies 
 
 This system operates using:
-	- Python 3.6.7
-	- Kivy 1.10.1
-	- Rasbian
+	- Python 3.6.7  
+	- Kivy 1.10.1  
+	- Rasbian  
  
 ## Hardware
 
