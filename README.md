@@ -32,7 +32,9 @@ This is a sign in page for nurses, it will reference a database of users
 
 
 usr_Name|passw|priv_level
+
 jdoe    |***  | 1
+
 dbainter|***  | 2
 
 ### Operation.py.kv
@@ -46,7 +48,9 @@ Patient database Schema:
 - risk: how likely they are to get up based on sensors (1-4, 4 sets off alarm)
 
 pat_Name|condition|room |risk
+
 jdoe    |brokenarm|1234 |1 
+
 dbainter|apendix  | 234 |2
 
 
