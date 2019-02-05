@@ -14,10 +14,10 @@ This system operates using:
 
 System hardware consists of:
 - a Raspberry Pi 3b
-    - RC522 Antenna RFID Reader
-    - Associated RFID cards. 
-        The RFID is wired to the Pi through use of a breadboard. The wiring documentation can be found under: https://pimylifeup.com/raspberry-pi-rfid-rc522/
-    - A button for manual reset
+- RC522 Antenna RFID Reader
+- Associated RFID cards. 
+    The RFID is wired to the Pi through use of a breadboard. The wiring documentation can be found under: https://pimylifeup.com/raspberry-pi-rfid-rc522/
+- A button for manual reset
 
 ## Source Files
 
