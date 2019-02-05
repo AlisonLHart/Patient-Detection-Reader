@@ -25,10 +25,10 @@ System hardware consists of:
 
 This is a sign in page for nurses, it will reference a database of users
 
-User database Schema:
-usr_Name: user name
-passw: password (this will be hashed and salted)
-priv_level: priviledge level (this will determine what a user can do)
+- User database Schema:
+- usr_Name: user name
+- passw: password (this will be hashed and salted)
+- priv_level: priviledge level (this will determine what a user can do)
 
 
 usr_Name|passw|priv_level
@@ -40,10 +40,10 @@ dbainter|***  | 2
 This is the main view for the program, for prototyping it will only allow you to interact with a single patient, in the future we would like it to integrate with a patient database
 
 Patient database Schema:
-pat_Name: patient name
-codition: condition of patient
-room: room patient is in
-risk: how likely they are to get up based on sensors (1-4, 4 sets off alarm)
+- pat_Name: patient name
+- codition: condition of patient
+- room: room patient is in
+- risk: how likely they are to get up based on sensors (1-4, 4 sets off alarm)
 
 pat_Name|condition|room |risk
 jdoe    |brokenarm|1234 |1 
