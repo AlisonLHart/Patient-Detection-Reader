@@ -58,10 +58,12 @@
             background_color: (.15,.15,.15, 1)
             size_hint_x: .2
     BoxLayout:
+        padding: 10
         BoxLayout:
             id: patient_details
             orientation: "vertical"
             size_hint_x: .8
+            spacing: 10
 
             BoxLayout:
                 id: patient_labels
@@ -74,7 +76,7 @@
                         size: self.size
                         pos:self.pos
                 FlatButton:
-                    text: 'Check in date'
+                    text: 'Check In'
                     size_hint_x: .1
                 FlatButton:
                     text: 'Patient ID'
@@ -96,6 +98,7 @@
                 id: patient_inputs
                 size_hint_y: None
                 height: 30
+                spacing: 5
                 TextInput:
                     id: Check_inp
                     size_hint_x: .1
@@ -114,6 +117,40 @@
                 TextInput:
                     id: PD_inp
                     size_hint_x: .2
+
+            BoxLayout:
+                id: add_to_database
+                orientation: 'vertical'
+                
+                BoxLayout:
+                    size_hint_y: None
+                    height: 30
+                    canvas.before:
+                        Color:
+                            rgba: (.15,.15,.15, 1)
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+                    Label:
+                        text: 'Check In'
+                        size_hint_x: .1
+                    Label:
+                        text: 'Patient ID'
+                        size_hint_x: .2
+                    Label:
+                        text: 'Room number'
+                        size_hint_x: .1
+                    Label:
+                        text: 'EMG #'
+                        size_hint_x: .2
+                    Label:
+                        text: 'Primary nurse'
+                        size_hint_x: .2
+                    Label:
+                        text: 'Primary Doctor'
+                        size_hint_x: .2
+            BoxLayout:
+                id: patients
         BoxLayout:
             id: preview
             orientation: 'vertical'
