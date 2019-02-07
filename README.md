@@ -8,20 +8,49 @@ This system operates using:
 	- Python 3.6.7  
 	- Kivy 1.10.1  
 	- Rasbian  
+	- A version of SQL. This is TBA
  
 ## Hardware
 
-System hardware consists of a Raspberry Pi 3b, an RC522 Antenna RFID Reader, and associated RFID cards. The RFID is wired to the Pi through use of a breadboard. The wiring documentation can be found under: https://pimylifeup.com/raspberry-pi-rfid-rc522/
+System hardware consists of:
+- a Raspberry Pi 3b (his name is Dave =D )
+- RC522 Antenna RFID Reader
+- Associated RFID cards. 
+    The RFID is wired to the Pi through use of a breadboard. The wiring documentation can be found under: https://pimylifeup.com/raspberry-pi-rfid-rc522/
+- A button for manual reset
 
 ## Source Files
 
-### patient-manager.py
+### signin.py/kv
 
-Python source for managing patients based on data read from a .csv. This .csv includes the patient ID, name, date admitted, and assigned RFID ID. 
+This is a sign in page for nurses, it will reference a database of users
 
-Data is read continuously from the sheet, in a loop. Patient objects are created with each new entry, and any changes to data is updated accordingly in the correct patient object. The .csv includes the patient at-risk status, which for now is simply "NO ALERT" and "ALERT." Patients by default have a NO ALERT status, which changes to ALERT when the corresponding RFID tag is read. This class interacts with the app.py class, which is explained below. 
+#### User database Schema:
+- usr_Name: user name
+- passw: password (this will be hashed and salted)
+- priv_level: priviledge level (this will determine what a user can do)
 
-### app.py
 
-Python source for taking patient data from the patient-manager.py class and updating it in an application NUI (Natural User Interface) for user interaction. 
+usr_Name|passw|priv_level
+
+jdoe    |***  | 1
+
+dbainter|***  | 2
+
+### Operation.py.kv
+
+This is the main view for the program, for prototyping it will only allow you to interact with a single patient, in the future we would like it to integrate with a patient database
+
+#### Patient database Schema:
+- pat_Name: patient name
+- codition: condition of patient
+- room: room patient is in
+- risk: how likely they are to get up based on sensors (1-4, 4 sets off alarm)
+
+pat_Name|condition|room |risk
+
+jdoe    |brokenarm|1234 |1 
+
+dbainter|apendix  | 234 |2
+
 
