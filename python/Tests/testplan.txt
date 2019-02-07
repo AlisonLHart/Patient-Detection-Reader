@@ -1,0 +1,34 @@
+->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
+     PLANS FOR TESTING - TEST CASE WRITE-UPS AND NOTES
+->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
+
+=========RFID=========
+
+--------App.py---------
+
+- Need to test validity of RFID
+- 
+- Test READ_RFID (Use Case)
+- Instantiate class
+- Test reading chip
+- Record data/notes
+
+
+=========SignIn==========
+
+-------signin.kv----------
+
+- Nothing to test, will be tested in the signin.py module
+
+--------signin.py-------
+
+- Test VALIDATE_USER: make sure validate user method works, compare to stored credentials (Unit Test)
+- Test GUI_VALIDATE_USER: make sure validate user method works in the GUI (Unit Test)
+
+
+======Operator========
+
+-------operation.kv--------
+
+- Test 
+
