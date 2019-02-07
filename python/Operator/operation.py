@@ -13,15 +13,15 @@ class operatorWindow(BoxLayout):
     def update_patient(self):
         PID = self.ids.PID_inp.text
         patients_container = self.ids.patients
-        if PID == '1234':
+        if PID == (self.ids.PID_inp.text):
             details = BoxLayout(size_hint_y=None,height=30,pos_hint={'top':1})
             patients_container.add_widget(details)
 
-            checkIn = Label(text='00/00/0000', size_hint_x=.1)
+            checkIn = Label(text=self.ids.Check_inp.text, size_hint_x=.1)
             PID = Label(text=PID, size_hint_x=.2)
-            RN = Label(text='1234', size_hint_x=.1)
-            EMG = Label(text='1-111-111-1111', size_hint_x=.2)
-            risk= Label(text='risk_level', size_hint_x=.2)
+            RN = Label(text=self.ids.RN_inp.text, size_hint_x=.1)
+            EMG = Label(text=self.ids.EMG_inp.text, size_hint_x=.2)
+            risk= Label(text=self.ids.rfid_inp.text, size_hint_x=.2)
             reset= Button(text='reset', size_hint_x=.2)
 
             details.add_widget(checkIn)
@@ -31,8 +31,6 @@ class operatorWindow(BoxLayout):
             details.add_widget(risk)
             details.add_widget(reset)
 
-            #Update Preview
-            preview = self.ids.reset_preview
 class operatorApp(App):
     def build(self):
         return operatorWindow()

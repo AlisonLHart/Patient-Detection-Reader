@@ -96,20 +96,28 @@
                 TextInput:
                     id: Check_inp
                     size_hint_x: .1
+                    multiline: False
+                    on_text_validate:PID_inp.focus = True
                 TextInput:
                     id: PID_inp
                     size_hint_x: .2
                     multiline: False
-                    on_text_validate: root.update_patient()
+                    on_text_validate:RN_inp.focus = True
                 TextInput:
                     id: RN_inp
                     size_hint_x: .1
+                    multiline: False
+                    on_text_validate:EMG_inp.focus = True
                 TextInput:
                     id: EMG_inp
                     size_hint_x: .2
+                    multiline: False
+                    on_text_validate:rfid_inp.focus = True
                 TextInput:
-                    id: risk_inp
+                    id: rfid_inp
                     size_hint_x: .2
+                    multiline: False
+                    on_text_validate: root.update_patient()
                 FlatButton:
                     id: reset_inp
                     size_hint_x: .2
@@ -157,4 +165,4 @@
             TextInput:
                 id: reset_preview
                 readonly: True
-                text: 'Winter Haven Hospital\n200 Ave F NE\nWinter Haven, FL 33881\n\nTel: (863) 293-1121\nHospital No: \nDate: \n\n'
+                text: 'Winter Haven Hospital\n200 Ave F NE\nWinter Haven, FL 33881\n\nTel: (863) 293-1121\nHospital No:378b \n\n'
