@@ -26,9 +26,18 @@
 - Test GUI_VALIDATE_USER: make sure validate user method works in the GUI (Unit Test)
 
 
-======Operator========
+========Operator==========
 
 -------operation.kv--------
 
-- Test 
+- Nothing to test, will be tested in the operation.py module
+
+
+------operation.py---------
+
+- ADD TEST MODULES FOR EACH METHOD
+- FUNCTIONALITY OF EACH SHOULD BE TESTED
+- EXAMPLES: ENTER_USER_DATA, SELECT_PATIENT, WARNING_READ
+
+
 
