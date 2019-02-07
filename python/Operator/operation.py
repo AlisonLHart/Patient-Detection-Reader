@@ -13,6 +13,7 @@ class operatorWindow(BoxLayout):
         super().__init__(**kwargs)
 
     def reset(self, button):
+        #That feel when you get to the point where you need a database
         print("I'm a sexy seahorse")
 
     def update_patient(self):
