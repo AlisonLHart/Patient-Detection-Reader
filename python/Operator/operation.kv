@@ -42,21 +42,15 @@
                 pos:self.pos
         Button:
             id: cur_patient
-            text: 'Current Patient: '
+            text: 'Current Floor: '
             background_normal: ''
             background_color:(.15,.15,.15, 1)
             size_hint_x: .4
         Button:
             id: cur_condition
-            text: 'Default Condition'
+            text: 'Current Block:'
             background_normal: ''
             background_color: (.15,.15,.15, 1)
-        Button:
-            id: cur_reset
-            text: 'RESET'
-            background_normal: ''
-            background_color: (.15,.15,.15, 1)
-            size_hint_x: .2
     BoxLayout:
         padding: 10
         BoxLayout:
@@ -88,10 +82,10 @@
                     text: 'EMG #'
                     size_hint_x: .2
                 FlatButton:
-                    text: 'Primary nurse'
+                    text: 'RFID Tag'
                     size_hint_x: .2
                 FlatButton:
-                    text: 'Primary Doctor'
+                    text: ''
                     size_hint_x: .2
 
             BoxLayout:
@@ -105,6 +99,8 @@
                 TextInput:
                     id: PID_inp
                     size_hint_x: .2
+                    multiline: False
+                    on_text_validate: root.update_patient()
                 TextInput:
                     id: RN_inp
                     size_hint_x: .1
@@ -112,10 +108,10 @@
                     id: EMG_inp
                     size_hint_x: .2
                 TextInput:
-                    id: PN_inp
+                    id: risk_inp
                     size_hint_x: .2
-                TextInput:
-                    id: PD_inp
+                FlatButton:
+                    id: reset_inp
                     size_hint_x: .2
 
             BoxLayout:
@@ -140,18 +136,25 @@
                     Label:
                         text: 'Room number'
                         size_hint_x: .1
+                        
                     Label:
                         text: 'EMG #'
                         size_hint_x: .2
                     Label:
-                        text: 'Primary nurse'
+                        text: 'Risk'
                         size_hint_x: .2
                     Label:
-                        text: 'Primary Doctor'
+                        text: 'Reset'
                         size_hint_x: .2
-            BoxLayout:
-                id: patients
+                GridLayout:
+                    id: patients
+                    cols: 1
         BoxLayout:
             id: preview
             orientation: 'vertical'
             size_hint_x: .2
+
+            TextInput:
+                id: reset_preview
+                readonly: True
+                text: 'Winter Haven Hospital\n200 Ave F NE\nWinter Haven, FL 33881\n\nTel: (863) 293-1121\nHospital No: \nDate: \n\n'
