@@ -1,25 +1,28 @@
-<adminWindow>:
+<FlatButton@ButtonBehavior+Label>:
+    text: 'default'
+
+<AdminWindow>:
     id: main_win
     orientation: 'vertical'
     canvas.before:
         Color:
-            rgba: (.2,.2,.2, 1)
+            rgba: (.2,.2,.2,1)
         Rectangle:
-            size:self.size 
-            pos:self.pos
-
+            size: self.size
+            pos: self.pos
+    
     BoxLayout:
-        id:top_nav
+        id: top_nav
         size_hint_y: None
         height: 30
         canvas.before:
             Color:
-                rgba: (.15,.15,.15, 1)
+                rgba: (.15, .15, .15,1)
             Rectangle:
-                size:self.size 
-                pos:self.pos
-
-        Button:
+                size: self.size
+                pos: self.pos
+        
+        FlatButton:
             id: file_trigger
             text: 'File'
             on_release: file_dropdown.open(self)
@@ -28,19 +31,57 @@
 
             Widget:
                 on_parent: file_dropdown.dismiss()
-
+            
                 DropDown:
-                    id:file_dropdown
+                    id: file_dropdown
                     Button:
-                        id:close
-                        text: 'Quit'
+                        id: close
+                        text: 'quit'
                         size_hint_y: None
                         height: 30
-        
         Label:
             text: 'Admin Dashboard'
             bold: True
             size_hint: (.9,None)
             height: 30
+    BoxLayout:
+        id: content_nav
+        
+        BoxLayout:
+            id: nav_tabs
+            size_hint_x: .2
+            orientation: 'vertical'
+            spacing: 3
+            canvas.before:
+                Color:
+                    rgba: (.15, .15, .15,1)
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
 
-            
+            ToggleButton:
+                id: user_toggle
+                text: 'Manage Users'
+                size_hint_y: .1
+                state: 'down'
+                background_color: (.15, .15, .15,1)
+                background_normal: ''
+            ToggleButton:
+                id: patient_toggle
+                text: 'Manage Patients'
+                size_hint_y: .1
+                background_color: (.15, .15, .15,1)
+                background_normal: ''
+            ToggleButton:
+                id: analysis_toggle
+                text: 'Patient Analysis'
+                size_hint_y: .1
+                background_color: (.15, .15, .15,1)
+                background_normal: ''
+            Label:
+                id: sp
+                text: ''
+                size_hint_y: .7
+        BoxLayout:
+            id: content
+            size_hint_x: .8
