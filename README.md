@@ -8,7 +8,7 @@ This system operates using:
 	- Python 3.6.7  
 	- Kivy 1.10.1  
 	- Rasbian  
-	- A version of SQL. This is TBA
+	- MongoDB
  
 ## Hardware
 
