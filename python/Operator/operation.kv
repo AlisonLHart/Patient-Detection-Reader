@@ -166,3 +166,16 @@
                 id: reset_preview
                 readonly: True
                 text: 'Winter Haven Hospital\n200 Ave F NE\nWinter Haven, FL 33881\n\nTel: (863) 293-1121\nHospital No:378b \n\n'
+    
+    BoxLayout:
+        id: footer
+        size_hint_y: None
+        height: 30
+        canvas.before:
+            Color:
+                rgba: (.15,.15,.15, 1)
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        Label:
+            text: "Maintained by FL Poly Sr.Design group number 7"
