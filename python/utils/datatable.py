@@ -6,21 +6,10 @@ from kivy.uix.recycleview import RecycleView
 from pymongo import MongoClient
 from collections import OrderedDict
 
-Builder.load_string(''' 
-<datatable>:
-    id: main_win
-    RecycleView:
-        viewclass: 'Label'
-        id: table_floor
-        RecycleGridLayout:
-            id: table_floor_layout
-            cols: 6
-            default_size: (None, 250)
-            default_size_hint: (1,None)
-            size_hint_y: None
-            height: self.minimum_height
-            spacing: 5
-''')
+#Builder.load_string('''  ''') datatable.kv is what goes in the parenthases, nerd
+
+#Builder.load_file('datatable.kv') #This does ^ differently ... in theory
+
 class datatableWindow(BoxLayout):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -35,7 +24,7 @@ class datatableWindow(BoxLayout):
         table_data = []
         for t in colTitle:
             table_data.append({'text':str(t)})
-        #self.ids.table_floor_layout.cols = self.columns
+        self.ids.table_floor_layout.cols = self.columns
         self.ids.table_floor.data = table_data
 
     def get_patients(self): 
