@@ -1,11 +1,12 @@
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.lang import Builder
+from kivy.uix.recycleview import RecycleView
 
 from pymongo import MongoClient
 from collections import OrderedDict
 
-Builder.load_string('''
+Builder.load_string(''' 
 <datatable>:
     id: main_win
     RecycleView:
@@ -34,7 +35,7 @@ class datatableWindow(BoxLayout):
         table_data = []
         for t in colTitle:
             table_data.append({'text':str(t)})
-        self.ids.table_floor_layout.cols = self.columns
+        #self.ids.table_floor_layout.cols = self.columns
         self.ids.table_floor.data = table_data
 
     def get_patients(self): 
