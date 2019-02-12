@@ -1,7 +1,7 @@
 <datatableWindow>:
     id: main_win
     RecycleView:
-        viewclass: 'Label'
+        viewclass: 'CustLabel'
         id: table_floor
         RecycleGridLayout:
             id: table_floor_layout
@@ -11,3 +11,11 @@
             size_hint_y: None
             height: self.minimum_height
             spacing: 5
+<CustLabel@Label>:
+    bcolor: (1,1,1,1)
+    canvas.before:
+        Color:
+            rgba: root.bcolor
+        Rectangle:
+            size: self.size
+            pos: self.pos

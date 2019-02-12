@@ -3,12 +3,18 @@ from kivy.uix.boxlayout import BoxLayout
 
 from collections import OrderedDict
 from pymongo import MongoClient
+from utills.datatable import datatableWindow
 
 class AdminWindow(BoxLayout):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
         #print(self.get_users())
+
+        content = self.ids.content
+        users = self.get_users()
+        usersTable = datatableWindow(table=users)
+        content.add_widget(usersTable)
 
     def get_users(self): 
             client = MongoClient()
@@ -31,7 +37,10 @@ class AdminWindow(BoxLayout):
                 first_names.append(user['first_name'])
                 last_names.append(user['last_name'])
                 user_names.append(user['user_name'])
-                passwords.append(user['password'])
+                pwd = user['password']
+                if len(pwd) > 10:
+                    pwd = pwd[:10] + '...'
+                passwords.append(pwd)
                 designations.append(user['designation'])
             #print(designations)
             users_length = len(first_names)
