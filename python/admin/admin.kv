@@ -127,6 +127,33 @@
                 Screen:
                     id: scrnPatientContent
                     name: 'scrnPatientContent'
+                    BoxLayout:
+                        orientation: 'vertical'
+                        spacing: 10
+                        BoxLayout:
+                            id: scrnPatientContents
+                        BoxLayout:
+                            id: opsFieldsP
+                            spacing: 10
+                            size_hint_y: None
+                            height: 35
+                        BoxLayout:
+                            id: opsBtnsP
+                            spacing: 10
+                            size_hint_y: None
+                            height: 45
+                            Button:
+                                id: crudAddP
+                                text: 'Add Patient'
+                                on_release: root.add_patient_fields()
+                            Button:
+                                id: crudUpdateP
+                                text: 'Update Patient'
+                                on_release: root.update_patient_fields()
+                            Button:
+                                id: crudRemoveP
+                                text: 'Remove Patient'
+                                on_release: root.remove_patient_fields()
                 Screen:
                     id: scrnAnalysisContent
                     name: 'scrnAnalysisContent'

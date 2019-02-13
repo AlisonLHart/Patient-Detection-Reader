@@ -27,7 +27,7 @@ class AdminWindow(BoxLayout):
         content.add_widget(usersTable)
 
         #patients
-        patientScrn = self.ids.scrnPatientContent
+        patientScrn = self.ids.scrnPatientContents
         patients = self.get_patients()
         patientsTable = datatableWindow(table=patients)
         patientScrn.add_widget(patientsTable)
@@ -50,6 +50,27 @@ class AdminWindow(BoxLayout):
         target.add_widget(crud_user)
         target.add_widget(crud_pwd)
         target.add_widget(crud_des)
+        target.add_widget(crud_submit)
+
+    def add_patient_fields(self):
+        target = self.ids.opsFieldsP
+        target.clear_widgets()
+
+        crud_checkin = TextInput(hint_text = 'Check in date')
+        crud_pid = TextInput(hint_text = 'patient ID')
+        crud_rn = TextInput(hint_text = 'Room Number')
+        crud_emg = TextInput(hint_text = 'Emergancy Number')
+        crud_risk = Spinner(text='Risk', values = ['Low', 'High'])
+        crud_rfid = TextInput(hint_text = 'Rfid Tag Number')
+
+        crud_submit = Button(text='Add',size_hint_x=None,width=100,on_release=lambda x: self.add_patient(crud_checkin.text,crud_pid.text,crud_rn.text,crud_emg.text,crud_risk.text,crud_rfid.text))
+
+        target.add_widget(crud_checkin)
+        target.add_widget(crud_pid)
+        target.add_widget(crud_rn)
+        target.add_widget(crud_emg)
+        target.add_widget(crud_risk)
+        target.add_widget(crud_rfid)
         target.add_widget(crud_submit)
 
     def update_user_fields(self):
@@ -103,6 +124,18 @@ class AdminWindow(BoxLayout):
         users = self.get_users()
         usersTable = datatableWindow(table=users)
         content.add_widget(usersTable)
+        #print('is this working?')
+
+    def add_patient(self, checkin, pid, rn, emg, risk, rfid):
+        content = self.ids.scrnPatientContents
+        content.clear_widgets()
+
+        self.patients.insert_one({'checkin': checkin, 'pid':pid, 
+        'rn':rn, 'emg':emg, 'risk':risk, 'rfid':rfid})
+
+        pats = self.get_patients()
+        patientsTable = datatableWindow(table=pats)
+        content.add_widget(patientsTable)
         #print('is this working?')
 
     def update_user(self, first, last, user, pwd, des):
