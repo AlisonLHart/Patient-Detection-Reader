@@ -8,6 +8,7 @@ from collections import OrderedDict
 from pymongo import MongoClient
 from utills.datatable import datatableWindow
 from datetime import datetime
+import hashlib
 
 class AdminWindow(BoxLayout):
     def __init__(self, **kwargs):
@@ -51,10 +52,31 @@ class AdminWindow(BoxLayout):
         target.add_widget(crud_des)
         target.add_widget(crud_submit)
 
+    def update_user_fields(self):
+        target = self.ids.opsFields
+        target.clear_widgets()
+
+        crud_first = TextInput(hint_text = 'First Name')
+        crud_last = TextInput(hint_text = 'Last Name')
+        crud_user = TextInput(hint_text = 'User Name')
+        crud_pwd = TextInput(hint_text = 'Password')
+        crud_des = Spinner(text='Operator', values = ['Operator', 'Administator'])
+
+        crud_submit = Button(text='Update',size_hint_x=None,width=100,on_release=lambda x: self.update_user(crud_first.text,crud_last.text,crud_user.text,crud_pwd.text,crud_des.text))
+
+        target.add_widget(crud_first)
+        target.add_widget(crud_last)
+        target.add_widget(crud_user)
+        target.add_widget(crud_pwd)
+        target.add_widget(crud_des)
+        target.add_widget(crud_submit)
+
     def add_user(self, first, last, user, pwd, des):
         content = self.ids.scrnContents
         content.clear_widgets()
 
+        pwd = hashlib.sha256(pwd.encode()).hexdigest()
+        
         self.users.insert_one({'first_name': first, 'last_name':last, 
         'user_name':user, 'password':pwd, 'designation':des, 'date':datetime.now()})
 
@@ -63,6 +85,18 @@ class AdminWindow(BoxLayout):
         content.add_widget(usersTable)
         #print('is this working?')
 
+    def update_user(self, first, last, user, pwd, des):
+        content = self.ids.scrnContents
+        content.clear_widgets()
+
+        pwd = hashlib.sha256(pwd.encode()).hexdigest()
+
+        self.users.update_one({'user_name':user},{'$set':{'first_name': first, 'last_name':last, 
+        'user_name':user, 'password':pwd, 'designation':des, 'date':datetime.now()}})
+
+        users = self.get_users()
+        usersTable = datatableWindow(table=users)
+        content.add_widget(usersTable)
 
     def get_users(self): 
             client = MongoClient()
