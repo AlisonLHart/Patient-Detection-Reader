@@ -8,7 +8,7 @@ This system operates using:
 	- Python 3.6.7  
 	- Kivy 1.10.1  
 	- Rasbian  
-	- MongoDB
+	- MongoDB 4.0.6
  
 ## Hardware
 
@@ -23,34 +23,46 @@ System hardware consists of:
 
 ### signin.py/kv
 
-This is a sign in page for nurses, it will reference a database of users
+Sign in page for nurses, it will reference a database of users
 
-#### User database Schema:
+### Operation.py/kv
+
+Main view for the program for nurses. From this screen you can view patients and their information and will allow you to reset their status from High to Low
+
+### admin.py/kv
+
+Main view for the program for administratos. From this screen you can view and edit users and modify or add patient data.
+
+### datatable.py
+
+The datatable is the view and controller for the database. It's integrated into the admin.py file.
+
+## Database
+#### User collection:
+- first_names / last names: names of users
 - usr_Name: user name
-- passw: password (this will be hashed and salted)
-- priv_level: priviledge level (this will determine what a user can do)
+- passwords: password (this will be hashed and salted)
+- designations: priviledge level (this will determine what a user can do)
 
+	_users['first_names'] = {}
+	_users['last_names'] = {}
+	_users['user_names'] = {}
+	_users['passwords'] = {}
+	_users['designations'] = {}
 
-usr_Name|passw|priv_level
-
-jdoe    |***  | 1
-
-dbainter|***  | 2
-
-### Operation.py.kv
-
-This is the main view for the program, for prototyping it will only allow you to interact with a single patient, in the future we would like it to integrate with a patient database
-
-#### Patient database Schema:
-- pat_Name: patient name
-- codition: condition of patient
-- room: room patient is in
+#### Patient collection:
+- checkin: date checked in
+- pid: patient id
+- emg: emergancy contact
+- rn: room patient is in
 - risk: how likely they are to get up based on sensors (1-4, 4 sets off alarm)
+- rfid: rfid tag number
 
-pat_Name|condition|room |risk
-
-jdoe    |brokenarm|1234 |1 
-
-dbainter|apendix  | 234 |2
+	checkin = {},
+	pid = {},
+	rn = {},
+	emg = {},
+	risk = {},
+	rfid = {}
 
 
