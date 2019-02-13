@@ -71,6 +71,26 @@ class AdminWindow(BoxLayout):
         target.add_widget(crud_des)
         target.add_widget(crud_submit)
 
+    def remove_user_fields(self):
+        target = self.ids.opsFields
+        target.clear_widgets()
+
+        crud_user = TextInput(hint_text='User Name')
+        crud_submit = Button(text='Remove',size_hint_x=None,width=100,on_release=lambda x: self.remove_user(crud_user.text))
+
+        target.add_widget(crud_user)
+        target.add_widget(crud_submit)
+
+    def remove_user(self, user):
+        content = self.ids.scrnContents
+        content.clear_widgets()
+
+        self.users.remove({'user_name':user})
+
+        users = self.get_users()
+        usersTable = datatableWindow(table=users)
+        content.add_widget(usersTable)
+
     def add_user(self, first, last, user, pwd, des):
         content = self.ids.scrnContents
         content.clear_widgets()
