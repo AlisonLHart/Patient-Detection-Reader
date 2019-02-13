@@ -1,18 +1,26 @@
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.textinput import TextInput
+from kivy.uix.button import Button
+from kivy.uix.spinner import Spinner
 
 from collections import OrderedDict
 from pymongo import MongoClient
 from utills.datatable import datatableWindow
+from datetime import datetime
 
 class AdminWindow(BoxLayout):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        client = MongoClient()
+        db = client.database #I named the database 'database' like a dum dum.
+        self.users = db.users # The collections of the database are users and patients
+        self.patients = db.patients
 
         #print(self.get_users())
 
         #users
-        content = self.ids.scrnContent
+        content = self.ids.scrnContents
         users = self.get_users()
         usersTable = datatableWindow(table=users)
         content.add_widget(usersTable)
@@ -22,6 +30,39 @@ class AdminWindow(BoxLayout):
         patients = self.get_patients()
         patientsTable = datatableWindow(table=patients)
         patientScrn.add_widget(patientsTable)
+
+
+    def add_user_fields(self):
+        target = self.ids.opsFields
+        target.clear_widgets()
+
+        crud_first = TextInput(hint_text = 'First Name')
+        crud_last = TextInput(hint_text = 'Last Name')
+        crud_user = TextInput(hint_text = 'User Name')
+        crud_pwd = TextInput(hint_text = 'Password')
+        crud_des = Spinner(text='Operator', values = ['Operator', 'Administator'])
+
+        crud_submit = Button(text='Add',size_hint_x=None,width=100,on_release=lambda x: self.add_user(crud_first.text,crud_last.text,crud_user.text,crud_pwd.text,crud_des.text))
+
+        target.add_widget(crud_first)
+        target.add_widget(crud_last)
+        target.add_widget(crud_user)
+        target.add_widget(crud_pwd)
+        target.add_widget(crud_des)
+        target.add_widget(crud_submit)
+
+    def add_user(self, first, last, user, pwd, des):
+        content = self.ids.scrnContents
+        content.clear_widgets()
+
+        self.users.insert_one({'first_name': first, 'last_name':last, 
+        'user_name':user, 'password':pwd, 'designation':des, 'date':datetime.now()})
+
+        users = self.get_users()
+        usersTable = datatableWindow(table=users)
+        content.add_widget(usersTable)
+        #print('is this working?')
+
 
     def get_users(self): 
             client = MongoClient()

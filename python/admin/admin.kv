@@ -97,6 +97,31 @@
                 Screen:
                     id: scrnContent
                     name: 'scrnContent'
+                    BoxLayout:
+                        orientation: 'vertical'
+                        spacing: 10
+                        BoxLayout:
+                            id: scrnContents
+                        BoxLayout:
+                            id: opsFields
+                            spacing: 10
+                            size_hint_y: None
+                            height: 35
+                        BoxLayout:
+                            id: opsBtns
+                            spacing: 10
+                            size_hint_y: None
+                            height: 45
+                            Button:
+                                id: crudAdd
+                                text: 'Add User'
+                                on_release: root.add_user_fields()
+                            Button:
+                                id: crudUpdate
+                                text: 'Update User'
+                            Button:
+                                id: crudRemove
+                                text: 'Remove User'
                 Screen:
                     id: scrnPatientContent
                     name: 'scrnPatientContent'
