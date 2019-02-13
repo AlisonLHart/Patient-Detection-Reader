@@ -243,7 +243,6 @@ class AdminWindow(BoxLayout):
 
             return (_users)
 
-
     def get_patients(self): 
             client = MongoClient()
             db = client.database
