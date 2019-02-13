@@ -11,22 +11,28 @@ class AdminWindow(BoxLayout):
 
         #print(self.get_users())
 
-        content = self.ids.content
+        #users
+        content = self.ids.scrnContent
         users = self.get_users()
         usersTable = datatableWindow(table=users)
         content.add_widget(usersTable)
+
+        #patients
+        patientScrn = self.ids.scrnPatientContent
+        patients = self.get_patients()
+        patientsTable = datatableWindow(table=patients)
+        patientScrn.add_widget(patientsTable)
 
     def get_users(self): 
             client = MongoClient()
             db = client.database
             users = db.users
-            _users = OrderedDict(
-                first_names = {},
-                last_names = {},
-                user_names = {},
-                passwords = {},
-                designations = {}
-            )
+            _users = OrderedDict()
+            _users['first_names'] = {}
+            _users['last_names'] = {}
+            _users['user_names'] = {}
+            _users['passwords'] = {}
+            _users['designations'] = {}
             first_names = []
             last_names = []
             user_names = []
@@ -81,7 +87,10 @@ class AdminWindow(BoxLayout):
                 rn.append(patient['rn'])
                 emg.append(patient['emg'])
                 risk.append(patient['risk'])
-                rfid.append(patient['rfid'])
+                rfidShort = patient['rfid']
+                if len(rfidShort) > 10:
+                        rfidShort = rfidShort[:10] + '...'
+                rfid.append(rfidShort)
                 
             #print(designations)
             patients_length = len(pid)
@@ -97,6 +106,16 @@ class AdminWindow(BoxLayout):
                 idx += 1
 
             return (_patients)
+
+    def change_screen(self, instance):
+        if instance.text == 'Manage Patients':
+            self.ids.scrnMngr.current = 'scrnPatientContent'
+        
+        elif instance.text == 'Manage Users':
+            self.ids.scrnMngr.current = 'scrnContent'
+        
+        else:
+            self.ids.scrnMngr.current = 'scrnAnalysisContent'
 
 class AdminApp(App):
     def build(self):
