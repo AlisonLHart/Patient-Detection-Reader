@@ -122,6 +122,16 @@ class AdminWindow(BoxLayout):
         target.add_widget(crud_user)
         target.add_widget(crud_submit)
 
+    def remove_patient_fields(self):
+        target = self.ids.opsFieldsP
+        target.clear_widgets()
+
+        crud_pid = TextInput(hint_text = 'patient ID')
+        crud_submit = Button(text='Remove',size_hint_x=None,width=100,on_release=lambda x: self.remove_patient(crud_pid.text))
+
+        target.add_widget(crud_pid)
+        target.add_widget(crud_submit)
+
     def remove_user(self, user):
         content = self.ids.scrnContents
         content.clear_widgets()
@@ -131,6 +141,17 @@ class AdminWindow(BoxLayout):
         users = self.get_users()
         usersTable = datatableWindow(table=users)
         content.add_widget(usersTable)
+
+    def remove_patient(self, pid):
+        content = self.ids.scrnPatientContents
+        content.clear_widgets()
+
+        self.patients.remove({'pid':pid})
+
+        pats = self.get_patients()
+        patientsTable = datatableWindow(table=pats)
+        content.add_widget(patientsTable)
+        #print('is this working?')
 
     def add_user(self, first, last, user, pwd, des):
         content = self.ids.scrnContents
