@@ -6,7 +6,8 @@ from kivy.uix.recycleview import RecycleView
 from pymongo import MongoClient
 from collections import OrderedDict
 
-#the .kv file being a seperate file breaks the everything so it's here now.
+#This is the .kv file, but if you make a seperate .kv file it breaks when you
+#integrate it in admin.py
 Builder.load_string(''' 
 <datatableWindow>:
     id: main_win

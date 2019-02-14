@@ -16,6 +16,7 @@ class signInWindow(BoxLayout):
         uname = user.text
         passw = pwd.text
 
+        #this is currently hard coded and doesn't actually do anything
         if uname == '' or passw == '':
             info.text = '[color=#FF0000] please enter username and password [/color]'
         else:
