@@ -35,31 +35,31 @@ class operatorWindow(BoxLayout):
         print("I'm a sexy seahorse")
 
     #Sooooooo, this is not the proper way to do this
-    def update_patient(self):
-        PID = self.ids.PID_inp.text
-        patients_container = self.ids.patients
+    # def update_patient(self):
+    #     PID = self.ids.PID_inp.text
+    #     patients_container = self.ids.patients
 
-        target_code = self.patients.find_one({'pid':PID})
-        if target_code == None:
-            pass
-        else:
-            details = BoxLayout(size_hint_y=None,height=30,pos_hint={'top':1})
-            patients_container.add_widget(details)
+    #     target_code = self.patients.find_one({'pid':PID})
+    #     if target_code == None:
+    #         pass
+    #     else:
+    #         details = BoxLayout(size_hint_y=None,height=30,pos_hint={'top':1})
+    #         patients_container.add_widget(details)
 
-            checkIn = Label(text=target_code['checkin'], size_hint_x=.1)
-            PID = Label(text=PID, size_hint_x=.2)
-            RN = Label(text=target_code['rn'], size_hint_x=.1)
-            EMG = Label(text=target_code['emg'], size_hint_x=.2)
-            risk= Label(text=target_code['risk'], size_hint_x=.2)
-            reset= Button(text='reset', size_hint_x=.2,)
-            reset.bind(on_press=self.reset)
+    #         checkIn = Label(text=target_code['checkin'], size_hint_x=.1)
+    #         PID = Label(text=PID, size_hint_x=.2)
+    #         RN = Label(text=target_code['rn'], size_hint_x=.1)
+    #         EMG = Label(text=target_code['emg'], size_hint_x=.2)
+    #         risk= Label(text=target_code['risk'], size_hint_x=.2)
+    #         reset= Button(text='reset', size_hint_x=.2,)
+    #         reset.bind(on_press=self.reset)
 
-            details.add_widget(checkIn)
-            details.add_widget(PID)
-            details.add_widget(RN)
-            details.add_widget(EMG)
-            details.add_widget(risk)
-            details.add_widget(reset)
+    #         details.add_widget(checkIn)
+    #         details.add_widget(PID)
+    #         details.add_widget(RN)
+    #         details.add_widget(EMG)
+    #         details.add_widget(risk)
+    #         details.add_widget(reset)
 
     def add_patient_fields(self):
         target = self.ids.opsFieldsP
