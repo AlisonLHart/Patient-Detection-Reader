@@ -42,13 +42,13 @@
                 pos:self.pos
         Button:
             id: cur_patient
-            text: 'Current Floor: '
+            text: 'This is a prototype'
             background_normal: ''
             background_color:(.15,.15,.15, 1)
             size_hint_x: .4
         Button:
             id: cur_condition
-            text: 'Current Block:'
+            text: 'things are not done yet'
             background_normal: ''
             background_color: (.15,.15,.15, 1)
     BoxLayout:
@@ -58,105 +58,38 @@
             orientation: "vertical"
             size_hint_x: .8
             spacing: 10
-
             BoxLayout:
-                id: patient_labels
-                size_hint_y: None
-                height: 40
-                canvas.before:
-                    Color: 
-                        rgba: (.15,.15,.15, 1)
-                    Rectangle:
-                        size: self.size
-                        pos:self.pos
-                FlatButton:
-                    text: 'Check In'
-                    size_hint_x: .1
-                FlatButton:
-                    text: 'Patient ID'
-                    size_hint_x: .2
-                FlatButton:
-                    text: 'Room number'
-                    size_hint_x: .1
-                FlatButton:
-                    text: 'EMG #'
-                    size_hint_x: .2
-                FlatButton:
-                    text: 'RFID Tag'
-                    size_hint_x: .2
-                FlatButton:
-                    text: ''
-                    size_hint_x: .2
-
-            BoxLayout:
-                id: patient_inputs
-                size_hint_y: None
-                height: 30
-                spacing: 5
-                TextInput:
-                    id: Check_inp
-                    size_hint_x: .1
-                    multiline: False
-                    on_text_validate:PID_inp.focus = True
-                TextInput:
-                    id: PID_inp
-                    size_hint_x: .2
-                    multiline: False
-                    on_text_validate:RN_inp.focus = True
-                TextInput:
-                    id: RN_inp
-                    size_hint_x: .1
-                    multiline: False
-                    on_text_validate:EMG_inp.focus = True
-                TextInput:
-                    id: EMG_inp
-                    size_hint_x: .2
-                    multiline: False
-                    on_text_validate:rfid_inp.focus = True
-                TextInput:
-                    id: rfid_inp
-                    size_hint_x: .2
-                    multiline: False
-                    on_text_validate: root.update_patient()
-                FlatButton:
-                    id: reset_inp
-                    size_hint_x: .2
-
-            BoxLayout:
-                id: add_to_database
-                orientation: 'vertical'
-                
-                BoxLayout:
-                    size_hint_y: None
-                    height: 30
-                    canvas.before:
-                        Color:
-                            rgba: (.15,.15,.15, 1)
-                        Rectangle:
-                            size: self.size
-                            pos: self.pos
-                    Label:
-                        text: 'Check In'
-                        size_hint_x: .1
-                    Label:
-                        text: 'Patient ID'
-                        size_hint_x: .2
-                    Label:
-                        text: 'Room number'
-                        size_hint_x: .1
-                        
-                    Label:
-                        text: 'EMG #'
-                        size_hint_x: .2
-                    Label:
-                        text: 'Risk'
-                        size_hint_x: .2
-                    Label:
-                        text: 'Reset'
-                        size_hint_x: .2
-                GridLayout:
-                    id: patients
-                    cols: 1
+                id: content
+                size_hint_x: .8
+                padding: (20,10)
+                ScreenManager:
+                    id: scrnMngr
+                    Screen:
+                        id: scrnPatientContent
+                        name: 'scrnPatientContent'
+                        BoxLayout:
+                            orientation: 'vertical'
+                            spacing: 10
+                            BoxLayout:
+                                id: scrnPatientContents
+                            BoxLayout:
+                                id: opsFieldsP
+                                spacing: 10
+                                size_hint_y: None
+                                height: 35
+                            BoxLayout:
+                                id: opsBtnsP
+                                spacing: 10
+                                size_hint_y: None
+                                height: 45
+                                Button:
+                                    id: crudAddP
+                                    text: 'Add Patient'
+                                    on_release: root.add_patient_fields()
+                                Button:
+                                    id: crudUpdateP
+                                    text: 'Update Patient'
+                                    on_release: root.update_patient_fields()
         BoxLayout:
             id: preview
             orientation: 'vertical'
@@ -167,6 +100,7 @@
                 readonly: True
                 text: 'Winter Haven Hospital\n200 Ave F NE\nWinter Haven, FL 33881\n\nTel: (863) 293-1121\nHospital No:378b \n\n'
     
+
     BoxLayout:
         id: footer
         size_hint_y: None
