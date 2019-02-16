@@ -1,5 +1,0 @@
---------------HOW TO USE MONGODB -----------------
-Step one: https://www.youtube.com/watch?v=ulRY_SePdEs&list=PLYxzS__5yYQk5r6iN4Q7h-xonV3F2HwT3&index=2
-Step two: pip install pymongo
-Step three: make a database
-Step four: use the database
