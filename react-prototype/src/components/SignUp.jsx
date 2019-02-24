@@ -1,4 +1,5 @@
 import React, {Component} from 'react'; 
+import {firebaseApp} from '../firebase';
 
 class SignUp extends Component{ // So react is handy dandy in that it's super object oriented. Components are basically objects
     //https://reactjs.org/docs/components-and-props.html
@@ -13,6 +14,11 @@ class SignUp extends Component{ // So react is handy dandy in that it's super ob
     //helper method
     signUp(){
         console.log('this.state', this.state)
+        const { email, password} = this.state;
+        firebaseApp.auth().createUserWithEmailAndPassword(email, password)
+            .catch(error=> {
+                console.log('error', error);
+            })
     }
 
     render() {
