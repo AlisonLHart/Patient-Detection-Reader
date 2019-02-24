@@ -7,7 +7,10 @@ class SignUp extends Component{ // So react is handy dandy in that it's super ob
         super(props)
         this.state = {
             email: '',
-            password: ''
+            password: '',
+            error: {
+                message: ''
+            }
         }
     }
     
@@ -17,7 +20,7 @@ class SignUp extends Component{ // So react is handy dandy in that it's super ob
         const { email, password} = this.state;
         firebaseApp.auth().createUserWithEmailAndPassword(email, password)
             .catch(error=> {
-                console.log('error', error);
+                this.setState({error})
             })
     }
 
@@ -47,6 +50,7 @@ class SignUp extends Component{ // So react is handy dandy in that it's super ob
                     Sign Up
                     </button>
                 </div>
+                <div>{this.state.error.message}</div>
                 </div>
         )
     }
