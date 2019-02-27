@@ -26,7 +26,7 @@ class SignUp extends Component{ // So react is handy dandy in that it's super ob
 
     render() {
         //wow, look at this nonsense
-        //This is the sign in page
+        //This is the sign up page
         return(
             <div className="form-inline" style={{margin:'5%'}}>
                 <h2>Sign Up</h2>
