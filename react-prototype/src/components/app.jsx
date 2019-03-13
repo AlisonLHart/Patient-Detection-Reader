@@ -1,8 +1,8 @@
-import React, {Component} from 'react'; 
+import React, { Component } from 'react';
 
-class App extends Component{ // So react is handy dandy in that it's super object oriented. Components are basically objects
+class App extends Component {
     render() {
-        return(
+        return (
             <div>App</div>
         )
     }
