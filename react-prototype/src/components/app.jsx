@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { firebaseApp } from '../firebase';
+import AddPatient from './AddPatient';
 
 class App extends Component {
     signOut() {
@@ -9,7 +10,11 @@ class App extends Component {
     render() {
         return (
             <div>
-                app
+                <div>
+                    <h3>Patients</h3>
+                    <AddPatient />
+                    <div>Patient list</div>
+                </div>
                 <button
                 className="btn btn-danger"
                 
