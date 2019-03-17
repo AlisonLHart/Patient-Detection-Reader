@@ -35,7 +35,7 @@ class AddPatient extends Component{
                 <button
                     className="btn btn-success"
                     type= "button"
-                    onClick={this.addPatient()}
+                    onClick={() => this.addPatient()}
                 >Submit</button>
             </div>
 
