@@ -1,4 +1,5 @@
 import  React, { Component} from 'react';
+import { connect} from 'react-redux';
 import {patientRef, firebaseApp} from '../firebase';
 
 class AddPatient extends Component{
@@ -12,10 +13,14 @@ class AddPatient extends Component{
     }
 
     addPatient(){
-        console.log('this.state', this.state)
+        console.log('this', this)
+        const {email} = this.props;
+        const {PID} = this.state;
+        const {RFID} = this.state;
+        const {RN} = this.state;
         //var db = firebaseApp.firestore();
         //patientRef.collection('patient-detection-reader').doc('Patient-detection').set({PID: 'pid', RFID: 'rfid'})
-        patientRef.push({Patient_Info: this.state})
+        patientRef.push({email, PID, RFID, RN})
     }
     render () {
         return (
@@ -54,5 +59,12 @@ class AddPatient extends Component{
     }
 
 }
+function mapStateToProps(state) {
+    const {email} = state;
+    return {
+        email
+    }
+}
 
-export default AddPatient;
+
+export default connect(mapStateToProps, null) (AddPatient);
