@@ -14,7 +14,7 @@ class AddPatient extends Component{
 
     addPatient(){
         console.log('this', this)
-        const {email} = this.props;
+        const {email} = this.props.user;
         const {PID} = this.state;
         const {RFID} = this.state;
         const {RN} = this.state;
@@ -60,9 +60,9 @@ class AddPatient extends Component{
 
 }
 function mapStateToProps(state) {
-    const {email} = state;
+    const {user} = state;
     return {
-        email
+        user
     }
 }
 

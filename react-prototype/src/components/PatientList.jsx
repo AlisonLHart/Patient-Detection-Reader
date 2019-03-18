@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
-import {patientRef} from '../firebase'
+import { connect } from 'react-redux';
+import {patientRef} from '../firebase';
+import {setPatients} from  '../actions';
 
 class PatientList extends Component{
     componentDidMount() {
@@ -11,15 +13,32 @@ class PatientList extends Component{
                 //console.log('patientObject', patientObject)
                 patients.push({email, PID, RFID, RN});
             })
-            console.log('patients', patients)
+            console.log('patients', patients);
+            this.props.setPatients(patients);
         })
     }
     render(){
+        console.log('this.props.patients', this.props.patients);
         return (
-            <div>PatientList</div>
+            <div>
+            {
+                this.props.patients.map(patient => {
+                    return (
+                        <div>{patient.PID}</div>
+                    )
+                })
+            }
+            </div>
         )
     }
 
 }
 
-export default PatientList
+function mapStateToProps(state){
+    const {patients} = state;
+    return{
+        patients
+    }
+}
+
+export default connect(mapStateToProps,{setPatients})(PatientList);

@@ -10,8 +10,8 @@ class App extends Component {
     }
     render() {
         return (
-            <div>
-                <div>
+            <div style={{margin: '50px'}}>
+                <div >
                     <h3>Patients</h3>
                     <AddPatient />
                     <PatientList/>
@@ -29,7 +29,7 @@ class App extends Component {
 }
 
 function mapStatetToProps(state){
-    console.log('state', state);
+    //console.log('state', state);
     return {}
 }
 
