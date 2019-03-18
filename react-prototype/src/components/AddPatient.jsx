@@ -1,18 +1,21 @@
 import  React, { Component} from 'react';
-import {patientRef} from '../firebase';
+import {patientRef, firebaseApp} from '../firebase';
 
 class AddPatient extends Component{
     constructor(props){
         super(props);
         this.state = {
-            pid: '',
-            rfid: ''
+            PID: '',
+            RFID: '',
+            RN: ''
         }
     }
 
     addPatient(){
         console.log('this.state', this.state)
-        patientRef.push({PID: 'test23', RFID: 'test12'})
+        //var db = firebaseApp.firestore();
+        //patientRef.collection('patient-detection-reader').doc('Patient-detection').set({PID: 'pid', RFID: 'rfid'})
+        patientRef.push({Patient_Info: this.state})
     }
     render () {
         return (
@@ -20,17 +23,24 @@ class AddPatient extends Component{
             <div className="form-group">
             <input 
                 type="text"
-                placeholder="patient ID"
+                placeholder="Patient ID"
                 className="form-control"
                 style={{marginRight: '5px'}}
-                onChange={event => this.setState({pid: event.target.value})}
+                onChange={event => this.setState({PID: event.target.value})}
                 />
                 <input 
                 type="text"
-                placeholder="add an RFID tag"
+                placeholder="Add an RFID tag"
                 className="form-control"
                 style={{marginRight: '5px'}}
-                onChange={event => this.setState({rfid: event.target.value})}
+                onChange={event => this.setState({RFID: event.target.value})}
+                />
+                <input 
+                type="text"
+                placeholder="Patient Room Number"
+                className="form-control"
+                style={{marginRight: '5px'}}
+                onChange={event => this.setState({RN: event.target.value})}
                 />
                 <button
                     className="btn btn-success"

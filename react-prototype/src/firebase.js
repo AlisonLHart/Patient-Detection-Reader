@@ -10,4 +10,4 @@ const config = {
 };
 
 export const firebaseApp = firebase.initializeApp(config);
-export const patientRef = firebase.database().ref('patients');
+export const patientRef = firebase.database().ref("patientTest");
