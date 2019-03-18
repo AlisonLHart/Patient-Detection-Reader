@@ -1,6 +1,6 @@
 import  React, { Component} from 'react';
 import { connect} from 'react-redux';
-import {patientRef, firebaseApp} from '../firebase';
+import {patientRef} from '../firebase';
 
 class AddPatient extends Component{
     constructor(props){
