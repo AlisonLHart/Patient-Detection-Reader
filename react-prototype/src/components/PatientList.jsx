@@ -22,9 +22,10 @@ class PatientList extends Component{
         return (
             <div>
             {
-                this.props.patients.map(patient => {
+                this.props.patients.map((patient,index) => {
                     return (
-                        <div>{patient.PID}</div>
+                        <div key = {index}>{patient.PID}</div>
+                        // <PatientItem key = {index} patient={patient}
                     )
                 })
             }
