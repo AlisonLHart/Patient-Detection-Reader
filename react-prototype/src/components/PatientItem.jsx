@@ -1,15 +1,16 @@
 import React, {Component} from 'react';
+import Table from 'react-bootstrap/Table';
 
 class PatientItem extends Component {
     render() {
         //console.log('this.props.patient', this.props.patients)
         const {PID, RN, Risk} = this.props.patient;
         return(
-            <div style= {{margin: '5px'}}>
-                <span>Patient ID: <strong>{PID}</strong></span>
-                <span> Room Number <strong>{RN}</strong></span>
-                <span> Risk Level: <strong>{Risk}</strong></span>
-            </div>
+            <Table  width="600px" >
+                <td width="200px">Patient ID: <strong>{PID}</strong></td>
+                <td width="200px"> Room Number <strong>{RN}</strong></td>
+                <td width="200px"> Risk Level: <strong>{Risk}</strong></td>
+            </Table>
         )
     }
 }
