@@ -10,9 +10,9 @@ class PatientList extends Component{
             let patients = [];
             snap.forEach(patient => {
                 //let patientObject = patient.val();
-                const {email, PID, RFID, RN} = patient.val();
+                const {email, PID, RFID, RN, Risk} = patient.val();
                 //console.log('patientObject', patientObject)
-                patients.push({email, PID, RFID, RN});
+                patients.push({email, PID, RFID, RN, Risk});
             })
             console.log('patients', patients);
             this.props.setPatients(patients);
