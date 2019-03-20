@@ -1,6 +1,8 @@
 import  React, { Component} from 'react';
 import { connect} from 'react-redux';
 import {patientRef} from '../firebase';
+//import {ToggleButton,ToggleButtonGroup} from 'react-bootstrap'
+//import Switch from "react-switch";
 
 class AddPatient extends Component{
     constructor(props){
@@ -8,8 +10,11 @@ class AddPatient extends Component{
         this.state = {
             PID: '',
             RFID: '',
-            RN: ''
+            RN: '',
+            emailTwo: '',
+            Risk: 'NO RFID',
         }
+
     }
 
     addPatient(){
@@ -18,10 +23,14 @@ class AddPatient extends Component{
         const {PID} = this.state;
         const {RFID} = this.state;
         const {RN} = this.state;
+        const {emailTwo} = this.state;
+        const {Risk} = this.state;
         //var db = firebaseApp.firestore();
         //patientRef.collection('patient-detection-reader').doc('Patient-detection').set({PID: 'pid', RFID: 'rfid'})
-        patientRef.push({email, PID, RFID, RN})
+        patientRef.push({email, PID, RFID, RN, emailTwo, Risk})
     }
+
+
     render () {
         return (
             <div className="form-inline">
@@ -33,13 +42,7 @@ class AddPatient extends Component{
                 style={{marginRight: '5px'}}
                 onChange={event => this.setState({PID: event.target.value})}
                 />
-                <input 
-                type="text"
-                placeholder="Add an RFID tag"
-                className="form-control"
-                style={{marginRight: '5px'}}
-                onChange={event => this.setState({RFID: event.target.value})}
-                />
+                
                 <input 
                 type="text"
                 placeholder="Patient Room Number"

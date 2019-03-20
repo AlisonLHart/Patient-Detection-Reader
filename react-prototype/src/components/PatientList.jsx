@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import {patientRef} from '../firebase';
 import {setPatients} from  '../actions';
+import PatientItem from './PatientItem';
 
 class PatientList extends Component{
     componentDidMount() {
@@ -24,8 +25,8 @@ class PatientList extends Component{
             {
                 this.props.patients.map((patient,index) => {
                     return (
-                        <div key = {index}>{patient.PID}</div>
-                        // <PatientItem key = {index} patient={patient}
+                        //<div key = {index}>{patient.PID}</div>
+                        <PatientItem key = {index} patient={patient}/>
                     )
                 })
             }
