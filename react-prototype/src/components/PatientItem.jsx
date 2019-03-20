@@ -6,9 +6,9 @@ class PatientItem extends Component {
         const {PID, RN, Risk} = this.props.patient;
         return(
             <div style= {{margin: '5px'}}>
-                <span>{PID}</span>
-                <span>{RN}</span>
-                <span>{Risk}</span>
+                <span>Patient ID: <strong>{PID}</strong></span>
+                <span> Room Number <strong>{RN}</strong></span>
+                <span> Risk Level: <strong>{Risk}</strong></span>
             </div>
         )
     }
