@@ -35,7 +35,6 @@ class Fireconnector():
     
     def getPatient(self):
         self.patientID = input("Enter the Patient ID: ")
-        print(self.jsondata)
         for obj in self.jsondata:
             if(self.jsondata[obj]["PID"]==str(self.patientID)):
                 print("FOUND IT\n")
