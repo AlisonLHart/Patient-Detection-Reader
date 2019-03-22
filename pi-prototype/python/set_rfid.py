@@ -29,6 +29,7 @@ class Fireconnector():
             print("PATIENT ID: " + str(self.patientID) + "\nTAG ID: " + tagID)
 
             result = self.fb.put('/patientTest/'+ patient,'RFID', tagID)
+            result = self.fb.put('patientTest/'+patient,'Risk', "LOW")
         finally:
             GPIO.cleanup()
 
